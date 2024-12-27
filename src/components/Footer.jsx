@@ -12,7 +12,7 @@ function Footer() {
           </div>
           <div className="mb-4 md:mb-0 text-center md:text-left">
             <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-            <p className="text-sm">For any queries, please contact: <a href="mailto:dubeyapratim20@gmail.com" className="hover:text-blue-300 transition-colors duration-300">apratimdubey@example.com</a></p>
+            <p className="text-sm">For any queries, please contact: <a href="mailto:dubeyapratim20@gmail.com" className="hover:text-blue-300 transition-colors duration-300">dubeyapratim20@gmail.com</a></p>
           </div>
           <div className="text-center md:text-right">
             <p className="text-sm">Developed and managed by <span className="font-semibold">Apratim Dubey</span></p>
