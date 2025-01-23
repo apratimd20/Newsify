@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from '../card/Card'
 
-function Home({ q, language }) {
+function Home({ q, language,apikey }) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ function Home({ q, language }) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/everything?q=${q}&language=${language}&pageSize=20&page=${page}&sortBy=publishedAt&apiKey=72f945e9bb36445aa39857d675e1c65d`
+        `https://newsapi.org/v2/everything?q=${q}&language=${language}&pageSize=20&page=${page}&sortBy=publishedAt&apiKey=${apikey}`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
