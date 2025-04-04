@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Sun, Moon, Menu, X } from "lucide-react";
 
 export const Navbar = ({ dosearch, setdosearch, lang, setLang, darkMode, toggleDarkMode }) => {
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ export const Navbar = ({ dosearch, setdosearch, lang, setLang, darkMode, toggleD
   };
 
   const handleLang = () => {
-    setLang(lang === 'hi' ? 'en' : 'hi');
+    setLang(lang === "hi" ? "en" : "hi");
   };
 
   const toggleMenu = () => {
@@ -45,51 +46,40 @@ export const Navbar = ({ dosearch, setdosearch, lang, setLang, darkMode, toggleD
             </div>
           </div>
           <div className="hidden md:flex items-center">
-            <form onSubmit={handleSearch} className="mr-4">
+            <form onSubmit={handleSearch} className="mr-4 flex w-full max-w-xs">
               <input
                 type="text"
                 placeholder="Search here"
                 value={search}
                 onChange={handleInputChange}
-                className="rounded-l-md py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white dark:bg-gray-700 dark:text-white"
+                className="flex-grow rounded-l-md py-2 px-4 border border-r-0 text-gray-800 border-gray-200 bg-white dark:bg-gray-700 dark:text-white"
               />
-              <button type="submit" className="px-4 py-2 rounded-r-md bg-blue-500 text-white">Search</button>
+              <button type="submit" className="px-4 py-2 rounded-r-md bg-blue-500 text-white whitespace-nowrap">Search</button>
             </form>
-            <select 
-              value={lang} 
-              onChange={handleLang}
-              className="mr-4 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white"
-            >
-              <option value="hi">HI</option>
-              <option value="en">EN</option>
-            </select>
+            <div className="relative mr-4">
+              <select 
+                value={lang} 
+                onChange={handleLang}
+                className="appearance-none rounded-md pl-3 pr-8 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="hi">Hindi</option>
+                <option value="en">English</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-white">
+                ▼
+              </div>
+            </div>
             <button 
               onClick={toggleDarkMode}
               className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
             >
-              {darkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
+              {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
             </button>
           </div>
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -105,31 +95,36 @@ export const Navbar = ({ dosearch, setdosearch, lang, setLang, darkMode, toggleD
             <NavLink to="/politics" className="mobile-nav-link">Politics</NavLink>
           </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <form onSubmit={handleSearch} className="flex items-center">
+            <form onSubmit={handleSearch} className="flex items-center w-full gap-2">
               <input
                 type="text"
                 placeholder="Search here"
                 value={search}
                 onChange={handleInputChange}
-                className="rounded-l-md py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white dark:bg-gray-700 dark:text-white w-full"
+                className="flex-grow py-2 px-4 border border-gray-200 rounded-md text-gray-800 bg-white dark:bg-gray-700 dark:text-white"
               />
-              <button type="submit" className="px-4 py-2 rounded-r-md bg-blue-500 text-white">Search</button>
+              <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">Search</button>
             </form>
           </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex justify-between items-center">
-            <select 
-              value={lang} 
-              onChange={handleLang}
-              className="rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white"
-            >
-              <option value="hi">HI</option>
-              <option value="en">EN</option>
-            </select>
+            <div className="relative">
+              <select 
+                value={lang} 
+                onChange={handleLang}
+                className="appearance-none rounded-md pl-3 pr-8 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="hi">Hindi</option>
+                <option value="en">English</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-white">
+                ▼
+              </div>
+            </div>
             <button 
               onClick={toggleDarkMode}
               className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
             >
-              {darkMode ? 'Light Mode' : 'Dark Mode'}
+              {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
             </button>
           </div>
         </div>
